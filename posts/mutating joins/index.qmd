@@ -1,0 +1,30 @@
+---
+title: "How to discard all but one column of interest from y when using left_join in R"
+author: "Philip Kimani"
+date: "2023-03-04"
+categories: [data science]
+image: "image.jpg"
+---
+
+In the following example, **`x`** and **`y`** are sample dataframes with a common column called "common_column". The goal is to left join these dataframes on the common column, but to only include the "column_of_interest" column from **`y`** in the resulting dataframe.
+
+```{r}
+# create sample dataframes x and y
+x <- data.frame(common_column = c("A", "B", "C", "D"),
+                x_column1 = c(1, 2, 3, 4),
+                x_column2 = c(5, 6, 7, 8))
+
+y <- data.frame(common_column = c("A", "B", "C", "D"),
+                y_column1 = c("apple", "banana", "carrot", "date"),
+                y_column2 = c(10, 20, 30, 40),
+                column_of_interest = c("red", "yellow", "orange", "brown"))
+
+# left join x and y, selecting only the column_of_interest column from y
+library(dplyr)
+
+joined_data <- left_join(x, y %>% select(common_column, column_of_interest), 
+                         by = c("common_column"="common_column"))
+
+```
+
+The **`left_join`** function from the **`dplyr`** package is used, and **`y`** is piped into the **`select`** function using **`%>%`**. The **`select`** function selects only the "column_of_interest" column, and the resulting dataframe with only that column is used in the **`left_join`** function with **`x`** on the common column "common_column". The resulting dataframe, **`joined_data`**, will have all columns from **`x`** and only the "column_of_interest" column from **`y`**.

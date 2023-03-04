@@ -1,0 +1,14 @@
+{
+  "hash": "0f27a230622b7e51efd445f6a2e58984",
+  "result": {
+    "markdown": "---\ntitle: \"How to discard all but one column of interest from y when using left_join in R\"\nauthor: \"Philip Kimani\"\ndate: \"2023-03-04\"\ncategories: [data science]\nimage: \"image.jpg\"\n---\n\n\nIn the following example, **`x`** and **`y`** are sample dataframes with a common column called \"common_column\". The goal is to left join these dataframes on the common column, but to only include the \"column_of_interest\" column from **`y`** in the resulting dataframe.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# create sample dataframes x and y\nx <- data.frame(common_column = c(\"A\", \"B\", \"C\", \"D\"),\n                x_column1 = c(1, 2, 3, 4),\n                x_column2 = c(5, 6, 7, 8))\n\ny <- data.frame(common_column = c(\"A\", \"B\", \"C\", \"D\"),\n                y_column1 = c(\"apple\", \"banana\", \"carrot\", \"date\"),\n                y_column2 = c(10, 20, 30, 40),\n                column_of_interest = c(\"red\", \"yellow\", \"orange\", \"brown\"))\n\n# left join x and y, selecting only the column_of_interest column from y\nlibrary(dplyr)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n\nAttaching package: 'dplyr'\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n```\n:::\n\n```{.r .cell-code}\njoined_data <- left_join(x, y %>% select(common_column, column_of_interest), \n                         by = c(\"common_column\"=\"common_column\"))\n```\n:::\n\n\nThe **`left_join`** function from the **`dplyr`** package is used, and **`y`** is piped into the **`select`** function using **`%>%`**. The **`select`** function selects only the \"column_of_interest\" column, and the resulting dataframe with only that column is used in the **`left_join`** function with **`x`** on the common column \"common_column\". The resulting dataframe, **`joined_data`**, will have all columns from **`x`** and only the \"column_of_interest\" column from **`y`**.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

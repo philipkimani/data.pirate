@@ -1,0 +1,34 @@
+---
+title: "Purr::pmap function"
+author: "Loffi Ruskins"
+date: "2023-03-04"
+categories: [writing]
+image: "image.jpg"
+---
+
+An example code for the **`pmap`** function in R using a sample dataset:
+
+```{r}
+library(purrr)
+
+# Define a function to add three numbers
+add_three <- function(x, y, z) {
+  return(x + y + z)
+}
+
+# Create a sample dataset
+data <- list(
+  list(1, 2, 3),
+  list(4, 5, 6),
+  list(7, 8, 9)
+)
+
+# Use the pmap function to apply the add_three function to each list in the dataset
+result <- pmap(data, add_three)
+
+# Print the result
+print(result)
+
+```
+
+In this example, we define a simple function **`add_three`** that takes three arguments and returns their sum. We then create a sample dataset **`data`** that consists of a list of lists, where each inner list contains three numbers. Finally, we use the **`pmap`** function from the **`purrr`** package to apply the **`add_three`** function to each inner list in the dataset, resulting in a list of the sums. The resulting list is stored in the **`result`** variable and printed to the console.

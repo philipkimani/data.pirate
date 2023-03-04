@@ -1,0 +1,14 @@
+{
+  "hash": "fdbadc4fdc1623c8297de5402cd413a4",
+  "result": {
+    "markdown": "---\ntitle: \"Purr::pmap function\"\nauthor: \"Loffi Ruskins\"\ndate: \"2023-03-04\"\ncategories: [writing]\nimage: \"image.jpg\"\n---\n\n\nAn example code for the **`pmap`** function in R using a sample dataset:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(purrr)\n\n# Define a function to add three numbers\nadd_three <- function(x, y, z) {\n  return(x + y + z)\n}\n\n# Create a sample dataset\ndata <- list(\n  list(1, 2, 3),\n  list(4, 5, 6),\n  list(7, 8, 9)\n)\n\n# Use the pmap function to apply the add_three function to each list in the dataset\nresult <- pmap(data, add_three)\n\n# Print the result\nprint(result)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[[1]]\n[1] 12\n\n[[2]]\n[1] 15\n\n[[3]]\n[1] 18\n```\n:::\n:::\n\n\nIn this example, we define a simple function **`add_three`** that takes three arguments and returns their sum. We then create a sample dataset **`data`** that consists of a list of lists, where each inner list contains three numbers. Finally, we use the **`pmap`** function from the **`purrr`** package to apply the **`add_three`** function to each inner list in the dataset, resulting in a list of the sums. The resulting list is stored in the **`result`** variable and printed to the console.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

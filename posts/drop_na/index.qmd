@@ -1,0 +1,55 @@
+---
+title: "Filter: How to remove missing values in a dataframe"
+author: "Philip Kimani"
+date: "2023-03-04"
+categories: [data science]
+image: "image.jpg"
+---
+
+In R, the **`drop_na()`** function from the **`tidyr`** package can be used to remove rows with missing values.
+
+Here, **`y`** should be the column number or name in your data frame **`df`** that you want to consider for missing values.
+
+Here's an example of how to use **`drop_na()`** to drop rows with missing values based on a particular column:
+
+```{r}
+library(tidyr)
+
+# create a data frame with missing values
+df <- data.frame(
+  x = c(1, 2, NA, 4),
+  y = c(NA, 5, 6, 7)
+)
+
+# drop rows with missing values in column "y"
+df2 <- drop_na(df, y)
+
+# view the result
+df2
+
+
+```
+
+In this example, **`drop_na()`** is used to remove rows with missing values in the "y" column of the data frame **`df`**. The resulting data frame **`df2`** only contains the rows where "y" is not missing.
+
+**Filter out values containing integers**
+
+To filter out values that contain integers in R, you can use the **`grepl()`** function with a regular expression pattern that matches integers.
+
+Here's an example:
+
+```{r}
+# Create a sample vector
+vec <- c("apple", "banana", "123", "grape", "orange")
+
+# Filter out values containing integers
+filtered_vec <- vec[!grepl("\\d+", vec)]
+
+# View the filtered vector
+filtered_vec
+
+```
+
+In this example, the **`grepl()`** function is used with the regular expression pattern **`"\\d+"`**, which matches one or more digits. The **`!`** operator is used to negate the result, so that values that match the pattern are filtered out. The resulting logical vector is used to subset the original vector using the **`[`** operator.
+
+Note that the regular expression pattern **`"\\d+"`** matches any sequence of one or more digits. If you only want to match integers (i.e., positive and negative whole numbers), you can use the pattern **`"^-?\\d+$"`**, which matches strings that start with an optional **`-`** sign, followed by one or more digits, and end with the end of the string.

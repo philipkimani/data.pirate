@@ -1,0 +1,14 @@
+{
+  "hash": "3b14e7c0fb23da9f595e6273f915795a",
+  "result": {
+    "markdown": "---\ntitle: \"Filter: How to remove missing values in a dataframe\"\nauthor: \"Philip Kimani\"\ndate: \"2023-03-04\"\ncategories: [data science]\nimage: \"image.jpg\"\n---\n\n\nIn R, the **`drop_na()`** function from the **`tidyr`** package can be used to remove rows with missing values.\n\nHere, **`y`** should be the column number or name in your data frame **`df`** that you want to consider for missing values.\n\nHere's an example of how to use **`drop_na()`** to drop rows with missing values based on a particular column:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyr)\n\n# create a data frame with missing values\ndf <- data.frame(\n  x = c(1, 2, NA, 4),\n  y = c(NA, 5, 6, 7)\n)\n\n# drop rows with missing values in column \"y\"\ndf2 <- drop_na(df, y)\n\n# view the result\ndf2\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n   x y\n1  2 5\n2 NA 6\n3  4 7\n```\n:::\n:::\n\n\nIn this example, **`drop_na()`** is used to remove rows with missing values in the \"y\" column of the data frame **`df`**. The resulting data frame **`df2`** only contains the rows where \"y\" is not missing.\n\nFilter out values containing integers\n\nTo filter out values that contain integers in R, you can use the **`grepl()`** function with a regular expression pattern that matches integers.\n\nHere's an example:\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Create a sample vector\nvec <- c(\"apple\", \"banana\", \"123\", \"grape\", \"orange\")\n\n# Filter out values containing integers\nfiltered_vec <- vec[!grepl(\"\\\\d+\", vec)]\n\n# View the filtered vector\nfiltered_vec\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"apple\"  \"banana\" \"grape\"  \"orange\"\n```\n:::\n:::\n\n\nIn this example, the **`grepl()`** function is used with the regular expression pattern **`\"\\\\d+\"`**, which matches one or more digits. The **`!`** operator is used to negate the result, so that values that match the pattern are filtered out. The resulting logical vector is used to subset the original vector using the **`[`** operator.\n\nNote that the regular expression pattern **`\"\\\\d+\"`** matches any sequence of one or more digits. If you only want to match integers (i.e., positive and negative whole numbers), you can use the pattern **`\"^-?\\\\d+$\"`**, which matches strings that start with an optional **`-`** sign, followed by one or more digits, and end with the end of the string.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
